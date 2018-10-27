@@ -8,7 +8,8 @@ function generateToken(user) {
 }
 
 exports.signin = (req, res, next) => {
-  res.send({ token: generateToken(req.user), firstname: req.user.firstname });
+  const { user, user: { email, firstname, lastname } } = req;
+  res.send({ token: generateToken(user), email, firstname, lastname });
 };
 
 exports.signup = function(req, res, next) {
@@ -42,7 +43,9 @@ exports.signup = function(req, res, next) {
         return next(err);
       }
 
-      res.json({ token: generateToken(user), firstname: user.firstname });
+      const { email, firstname, lastname } = user;
+
+      res.json({ token: generateToken(user), email, firstname, lastname });
     });
   });
 };
