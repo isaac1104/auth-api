@@ -17,6 +17,10 @@ exports.signup = function(req, res, next) {
     return res.status(422).send({ error: 'You must provide email and password!' });
   }
 
+  if (!firstname || !lastname) {
+    return res.status(422).send({ error: 'You must provide first and last name!' });
+  }
+
   User.findOne({ email }, (err, existingUser) => {
     if (err) {
       return next(err);
