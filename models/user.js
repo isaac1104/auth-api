@@ -8,7 +8,9 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true
   },
-  password: String
+  password: String,
+  firstname: String,
+  lastname: String
 });
 
 userSchema.pre('save', function(next) {
@@ -35,7 +37,7 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
     if (err) {
       return callback(err);
     }
-    
+
     callback(null, isMatch);
   });
 };
