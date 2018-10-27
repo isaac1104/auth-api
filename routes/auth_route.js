@@ -6,7 +6,7 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
 module.exports = app => {
-  app.get('/', (req, res) => {
+  app.get('/', requireAuth, (req, res) => {
     res.send('AUTH API');
   });
   app.post('/api/signin', requireSignin, Authentication.signin);
