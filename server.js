@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 2. provide your credentials as an object like below.
 
 module.exports = {
-  secret: ANY_RANDOM_STRING,
+  secret: 'nyei55g4qa',
   mongoURI: YOUR_MONGODB_URI
 }
 */
